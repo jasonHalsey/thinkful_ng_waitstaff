@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" ng-app="madapp">
+<html class="no-js" lang="en" ng-app="waitwait">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,8 +12,45 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis|Oswald" rel="stylesheet">
   </head>
   <body>
+  <header>
+      <h1>Waitstaff Calculator</h1>
+  </header>
+  <section class="main-container">
+      <section class="input-container" >
+        <article class="meal_details" ng-controller = "meal_controller as meal">
+            <h2>Enter The Meal Details</h2>
+            <form name="myForm" novalidate ng-submit="vm.submit()">
+                <label>Base Meal Price: </label><input type="text" name="base_meal_price" placeholder="Enter Price ex.- (9.99)" ng-model="meal.myform.base_meal_price" required />
+                <label>Tax Rate: </label><input type="text" name="tax_rate" placeholder="Enter Tax Rate" ng-model="vm.myform.tax_rate" required />
+                <label>Tip Percentage: </label><input type="text" name="tip_percentage" placeholder="Enter Tip %" ng-model="vm.myform.tip_percentage" required />
+                <button class="button" ng-click="vm.submit()">Submit</button>
+                <button class="button" ng-click="vm.clear()">Clear</button>
+            </form>
+        </article>
+      </section>
+      <section class="output-container" >
+        <article class="customer_charges" ng-controller = "charges_controller as charges">
+            <h2>Customer Charges {{charges.title}}</h2>
+            <span>Subtotal: </span>
+            <span>Tip: </span>
+            <span>Total: </span>
+        </article>
+        <article class="earnings_info" 
+        <article class="customer_charges" ng-controller = "earnings_controller as earnings">
+            <h2>My Earnings Info {{earnings.title}}</h2>
+            <span>Tip Total: </span>
+            <span>Meal Count: </span>
+            <span>Average Tip Per Meal: </span>
+        </article>
 
-    <footer></footer>
+      </section>
+
+  </section>
+  <section class="button-container">
+    <button class="button" ng-click="vm.reset()">Reset</button>
+  </section>
+  
+  <footer>&copy; Jason Halsey</footer>
 
   <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
   </body>
