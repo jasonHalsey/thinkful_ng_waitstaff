@@ -1,6 +1,14 @@
-var app = angular.module('plunker', []);
+var app = angular.module('waitApp', []);
 
 app.controller('MainController', function() {
+
+  var clearedForm = {
+      baseMealPrice: null,
+      tipPercentage: null,
+      taxRate: null
+    }
+
+
   this.totalEarnings = {
     totalTip: 0,
     mealCount: 0,
@@ -23,13 +31,34 @@ app.controller('MainController', function() {
     this.totalEarnings.totalTip = this.totalEarnings.totalTip + this.customerCharges.tip
     this.totalEarnings.mealCount = this.totalEarnings.mealCount + 1 
     this.totalEarnings.averageTipPerMeal = this.totalEarnings.totalTip / this.totalEarnings.mealCount
+
+    this.myform = {
+      baseMealPrice: null,
+      tipPercentage: null,
+      taxRate: null
+    }
   }
 
   this.clear = function clear(){
-    this.myform = this.totalEarnings
-  }
-  this.submit = function submit(){
-    this.myform = this.totalEarnings
+    this.myform = clearedForm
   }
 
+
+  this.wipeClean = function wipeClean(){
+    this.myform = {
+      baseMealPrice: null,
+      tipPercentage: null,
+      taxRate: null
+    }
+    this.totalEarnings = {
+      totalTip: 0,
+      mealCount: 0,
+      averageTipPerMeal: 0
+    }
+    this.customerCharges = {
+      subtotal: 0,
+      tip: 0,
+      total: 0
+    }
+  }
 });
